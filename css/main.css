@@ -49,7 +49,38 @@
   font-family: 'Verdana';
 }
 
+.privacyButton{
+  height: auto;
+  display: block;
+  bottom: 15px;
+  right: 25px;
+  position: fixed;
+  color: #cf0012;
+}
 
+.privacyModalBody h1{
+    color: #cf0012;
+}
+
+.privacyModalBody h2{
+    color: #cf0012;
+}
+
+.privacyModalBody h3{
+    color: #cf0012;
+}
+
+.privacyModalBody h4{
+    color: #cf0012;
+}
+
+.privacyModalBody h5{
+    color: #cf0012;
+}
+
+.privacyModalBody h6{
+    color: #cf0012;
+}
 
 @media screen
 and (max-width: 400px) {
