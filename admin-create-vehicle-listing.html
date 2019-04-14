@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  </head>
+  <body>
+    <h1 style="display: flex; justify-content: center; margin-top: 20px;">Admin Only - Create Listing</h1><br><br>
+    <!-- Create Listing Form -->
+    <form id="create-listing-form" method="post" action="create-listing.php" enctype="multipart/form-data" role="form" style="margin-left: 20px; margin-right: 20px;">
+      <div class="messages"></div>
+        <div class="controls">
+            <h3>These fields correspond to the name and description of the link to the listing page</h3><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form-listing-name">Listing Name *</label>
+                        <input id="form-listing-name" type="text" name="listingName" class="form-control" placeholder="Please enter the listing name *" required="required" data-error="Listing name is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form-listing-description">Listing Description *</label>
+                        <input id="form-listing-description" type="text" name="listingDescription" class="form-control" placeholder="Please enter the listing description *" required="required" data-error="Listing description is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:40px; background-color:#f9f2f2; height:5px;">
+                <hr>
+            </div>
+            <br>
+
+            <h3>These fields correspond to those that populate the listing page itself</h3><br>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form-listing-body">Listing Main Body *</label>
+                        <textarea id="form-listing-body" name="listingBody" class="form-control" placeholder="Please enter the listing details *" required="required" data-error="Listing details are required."></textarea>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="engine-size">Engine Size & Type *</label>
+                        <input id="engine-size" name="engineSize" class="form-control" placeholder="E.g. 1.8L Petrol" required="required" data-error="Engine size is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Upload images</p>
+                    <input name="files[]" type="file" multiple/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-muted">
+                        <strong>*</strong> These fields are required.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-success btn-send" value="Create Listing">
+                </div>
+            </div>
+    </div>
+
+</form>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="bootstrap/js/util.js"></script>
+  </body>
+</html>

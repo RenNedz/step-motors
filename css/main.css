@@ -82,6 +82,14 @@
     color: #cf0012;
 }
 
+.carListingImage {
+  width: 300px;
+}
+
+.card {
+  margin-top: 50px;
+}
+
 @media screen
 and (max-width: 400px) {
    .navbarLogo {
