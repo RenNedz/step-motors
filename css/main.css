@@ -103,3 +103,8 @@ and (max-width: 400px) {
      font-size: 13px;
    }
 }
+
+#carouselListingImages {
+  padding-left: 3%;
+  padding-right: 3%;
+}
