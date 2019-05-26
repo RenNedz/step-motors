@@ -85,24 +85,14 @@
                 </ul>
             </div>
         </nav>
-        
-        <div style="display: flex; flex-direction: row; justify-content: space-between; padding-top:20px; padding-bottom: 20px;">
-            
-            <div style="padding-left: 10px;">
-                <p><span class="stepMotorRedBlackOps">Mileage:</span> $MILEAGE$</p>
-                <p style="visibility: hidden;"><span class="stepMotorRedBlackOps">Doors:</span>$NUMBER-OF-DOORS$</p>
-                <p><span class="stepMotorRedBlackOps">Engine:</span> $ENGINE$</p>
-                <p><span class="stepMotorRedBlackOps">Year:</span> $REGYEAR$</p>
-                <p><span class="stepMotorRedBlackOps">Colour:</span> $VEHICLE-COLOUR$</p>
-            </div>
-
-            <div id="carouselListingImages" style="height: 500px; width: 600px; margin: 0 auto; background-color: #8181822b; margin-right: 120px; margin-left: 15px;" class="carousel slide" data-ride="carousel">
+                    
+            <div id="carouselListingImages" style="height: 400px; width: 300px; margin: 0 auto; background-color: #8181822b; margin-top: 20px;" class="carousel slide" data-ride="carousel">
                 <!-- These are the indicators at the bottom of the image to show which of the slides the user is on -->
                 <ol class="carousel-indicators">
                     $CAROUSEL-SLIDES$
                 </ol>
                 <!-- The 3 images -->
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="top: 50%; transform: perspective(1px) translateY(-50%);">
                     $LISTING-IMAGES$
                 </div>
                 <!--Controls for next and previous slide -->
@@ -116,7 +106,15 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-        </div>
+
+            <div style="padding-left: 10px; margin-top: 20px;">
+                <p><span class="stepMotorRedBlackOps">Mileage:</span> $MILEAGE$</p>
+                <p style="visibility: hidden;"><span class="stepMotorRedBlackOps">Doors:</span>$NUMBER-OF-DOORS$</p>
+                <p><span class="stepMotorRedBlackOps">Engine:</span> $ENGINE$</p>
+                <p><span class="stepMotorRedBlackOps">Year:</span> $REGYEAR$</p>
+                <p><span class="stepMotorRedBlackOps">Colour:</span> $VEHICLE-COLOUR$</p>
+            </div>
+
 
         <p style="margin-top: 40px;">$LISTING-BODY$</p>
 
@@ -311,41 +309,6 @@
     <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../bootstrap/js/util.js"></script>
 
-
-    <script type="text/javascript"> if (screen.width <= 699) { document.location = "$MOBILE-URL$";}</script>
-
-    <!-- <script>
-        jQuery('.carousel').carousel({ interval: 3000 });
-        // Normalize Carousel Heights - pass in Bootstrap Carousel items.
-        function carouselNormalization() {
-            var items = jQuery('#carouselListingImages .carousel-item'), //grab all slides
-                heights = [], //create empty array to store height values
-                shortest; //create variable to make note of the shortest slide
-
-            if (items.length) {
-                function normalizeHeights() {
-                    items.each(function () { //add heights to array
-                        heights.push(jQuery(this).height());
-                    });
-                    shortest = Math.min.apply(null, heights); //cache largest value
-                    items.each(function () {
-                        jQuery('.carousel-inner').css('height', shortest + 'px').css('overflow', 'hidden');
-
-                    });
-                };
-                normalizeHeights();
-
-                jQuery(window).on('resize orientationchange', function () {
-                    shortest = 0, heights.length = 0; //reset vars
-                    items.each(function () {
-                        jQuery('.carousel-inner').css('height', '0'); //reset min-height
-                    });
-                    normalizeHeights(); //run it again
-                });
-            }
-        }
-        carouselNormalization();
-    </script> -->
 
 </body>
 

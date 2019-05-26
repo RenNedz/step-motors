@@ -11,11 +11,29 @@ function resize_image($file, $h, $crop=FALSE) {
     return $dst;
 }
 
+function resize_image_mobile($file, $w, $crop=FALSE) {
+    list($width, $height) = getimagesize($file);
+    $newheight = $height / $width;
+    $newheight = $newheight * $w;
+    $newwidth = 1 * $w;
+    $src = imagecreatefromjpeg($file);
+    $dst = imagecreatetruecolor($newwidth, $newheight);
+    imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+    return $dst;
+}
+
 
 function resizeListingImages($listingPath, $imageFilenameArray, $imageHeight) {
     foreach ($imageFilenameArray as &$value) {
         $img = resize_image($listingPath . $value, $imageHeight);
         imagejpeg($img, $listingPath . $value);
+    }
+}
+
+function resizeListingImagesMobile($listingPath, $imageFilenameArray, $imageWidth) {
+    foreach ($imageFilenameArray as &$value) {
+        $img = resize_image_mobile($listingPath . $value, $imageWidth);
+        imagejpeg($img, $listingPath . 'mob' . $value);
     }
 }
 
@@ -120,7 +138,7 @@ function getListingHtml($fields, $imageFilenameArray, $mobileUrl) {
 } //TO DO: ------------------- ADD IF STATEMENT FOR NON MANDATORY FIELDS LIKE DOORS
 
 function getListingHtmlMobile($fields, $imageFilenameArray) {
-    $templateHtml = trim(file_get_contents('listing-generator-files/listing-template.html'));
+    $templateHtml = trim(file_get_contents('listing-generator-files/listing-template-mobile.html'));
     if (count($imageFilenameArray) > 0) {
         $carouselSlideHtml = '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';
         $inactiveSlideHtml = '<li data-target="#carouselExampleIndicators" data-slide-to="COUNT"></li>';
@@ -132,17 +150,15 @@ function getListingHtmlMobile($fields, $imageFilenameArray) {
         $carouselImagesHtml = '';
         $imageHtml = '<div class="carousel-item"><img class="d-block" src="$IMAGE$" alt="This is an image of the vehicle up for sale." ></div>';
         foreach ($imageFilenameArray as &$value) {
-            $carouselImagesHtml = $carouselImagesHtml .  str_replace('$IMAGE$', $value, $imageHtml);
+            $carouselImagesHtml = $carouselImagesHtml .  str_replace('$IMAGE$', 'mob' . $value, $imageHtml);
         }
         $carouselImagesHtml = preg_replace('/' . 'carousel-item' . '/', 'carousel-item active', $carouselImagesHtml, 1);
         $templateHtml = str_replace('$CAROUSEL-SLIDES$', $carouselSlideHtml, $templateHtml);
         $templateHtml = str_replace('$LISTING-IMAGES$', $carouselImagesHtml, $templateHtml);
     }
-    $templateHtml = str_replace('<script type="text/javascript"> if (screen.width <= 699) { document.location = "$MOBILE-URL$";}</script>', '', $templateHtml);
-    $templateHtml = str_replace('style="width: 600px; margin: 0 auto; background-color: grey;"', '', $templateHtml);
     $templateHtml = str_replace('$LISTING-NAME$', $fields["listingName"], $templateHtml);
     $templateHtml = str_replace('$LISTING-BODY$', $fields["listingBody"], $templateHtml);
-    $templateHtml = str_replace('<p style="visibility: hidden; padding: 10px;"><span class="stepMotorRedBlackOps">Doors:</span>$NUMBER-OF-DOORS$</p>', '<p style="padding: 10px;"><span class="stepMotorRedBlackOps">Doors:</span> ' . $fields["numberDoors"] . '</p>', $templateHtml);
+    $templateHtml = str_replace('<p style="visibility: hidden;"><span class="stepMotorRedBlackOps">Doors:</span>$NUMBER-OF-DOORS$</p>', '<p><span class="stepMotorRedBlackOps">Doors:</span> ' . $fields["numberDoors"] . '</p>', $templateHtml);
     $templateHtml = str_replace('$ENGINE$', $fields["engineSize"], $templateHtml);
     $templateHtml = str_replace('$REGYEAR$', $fields["registrationYear"], $templateHtml);
     $templateHtml = str_replace('$VEHICLE-COLOUR$', $fields["vehicleColour"], $templateHtml);
@@ -203,6 +219,7 @@ try
 
     $imageFilenameArray = moveImagesToListingDirectory("listings/" . $listingBaseName . '/');
     resizeListingImages("listings/" . $listingBaseName . '/', $imageFilenameArray, 500);
+    resizeListingImagesMobile("listings/" . $listingBaseName . '/', $imageFilenameArray, 300);
 
     $listingHTML = getListingHtml($fields, $imageFilenameArray, $listingBaseName . 'mob' . '.html');
     $listingFile = fopen($listFilename, "w");
