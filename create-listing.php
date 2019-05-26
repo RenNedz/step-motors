@@ -129,7 +129,25 @@ function getListingHtml($fields, $imageFilenameArray, $mobileUrl) {
     $templateHtml = str_replace('$MOBILE-URL$', $mobileUrl, $templateHtml);
     $templateHtml = str_replace('$LISTING-NAME$', $fields["listingName"], $templateHtml);
     $templateHtml = str_replace('$LISTING-BODY$', $fields["listingBody"], $templateHtml);
-    $templateHtml = str_replace('<p style="visibility: hidden;"><span class="stepMotorRedBlackOps">Doors:</span>$NUMBER-OF-DOORS$</p>', '<p><span class="stepMotorRedBlackOps">Doors:</span> ' . $fields["numberDoors"] . '</p>', $templateHtml);
+    if (empty($fields["numberDoors"])){
+        $templateHtml = str_replace('<p><span class="stepMotorRedBlackOps">Doors:</span> $NUMBER-OF-DOORS$</p>', '', $templateHtml);
+    } else {
+        $templateHtml = str_replace('$NUMBER-OF-DOORS$', $fields["numberDoors"], $templateHtml);
+    }
+    if (empty($fields["previousOwners"])){
+        $templateHtml = str_replace('<p><span class="stepMotorRedBlackOps">Previous Owners:</span> $PREV-OWNR$</p>', '', $templateHtml);
+    } else {
+        $templateHtml = str_replace('$PREV-OWNR$', $fields["previousOwners"], $templateHtml);
+    }
+    if (empty($fields["roadTax"])){
+        $templateHtml = str_replace('<p><span class="stepMotorRedBlackOps">Road Tax:</span> $ROAD-TAX$</p>', '', $templateHtml);
+    } else {
+        $templateHtml = str_replace('$ROAD-TAX$', $fields["roadTax"], $templateHtml);
+    }
+    $templateHtml = str_replace('$MAKE$', $fields["vehicleMake"], $templateHtml);
+    $templateHtml = str_replace('$MODEL$', $fields["vehicleModel"], $templateHtml);
+    $templateHtml = str_replace('$BODY-TYPE$', $fields["bodyType"], $templateHtml);
+    $templateHtml = str_replace('$FUEL-TYPE$', $fields["fuelType"], $templateHtml);
     $templateHtml = str_replace('$ENGINE$', $fields["engineSize"], $templateHtml);
     $templateHtml = str_replace('$REGYEAR$', $fields["registrationYear"], $templateHtml);
     $templateHtml = str_replace('$VEHICLE-COLOUR$', $fields["vehicleColour"], $templateHtml);
@@ -158,8 +176,26 @@ function getListingHtmlMobile($fields, $imageFilenameArray) {
     }
     $templateHtml = str_replace('$LISTING-NAME$', $fields["listingName"], $templateHtml);
     $templateHtml = str_replace('$LISTING-BODY$', $fields["listingBody"], $templateHtml);
-    $templateHtml = str_replace('<p style="visibility: hidden;"><span class="stepMotorRedBlackOps">Doors:</span>$NUMBER-OF-DOORS$</p>', '<p><span class="stepMotorRedBlackOps">Doors:</span> ' . $fields["numberDoors"] . '</p>', $templateHtml);
+    if (empty($fields["numberDoors"])){
+        $templateHtml = str_replace('<p><span class="stepMotorRedBlackOps">Doors:</span> $NUMBER-OF-DOORS$</p>', '', $templateHtml);
+    } else {
+        $templateHtml = str_replace('$NUMBER-OF-DOORS$', $fields["numberDoors"], $templateHtml);
+    }
+    if (empty($fields["previousOwners"])){
+        $templateHtml = str_replace('<p><span class="stepMotorRedBlackOps">Previous Owners:</span> $PREV-OWNR$</p>', '', $templateHtml);
+    } else {
+        $templateHtml = str_replace('$PREV-OWNR$', $fields["previousOwners"], $templateHtml);
+    }
+    if (empty($fields["roadTax"])){
+        $templateHtml = str_replace('<p><span class="stepMotorRedBlackOps">Road Tax:</span> $ROAD-TAX$</p>', '', $templateHtml);
+    } else {
+        $templateHtml = str_replace('$ROAD-TAX$', $fields["roadTax"], $templateHtml);
+    }
     $templateHtml = str_replace('$ENGINE$', $fields["engineSize"], $templateHtml);
+    $templateHtml = str_replace('$MAKE$', $fields["vehicleMake"], $templateHtml);
+    $templateHtml = str_replace('$MODEL$', $fields["vehicleModel"], $templateHtml);
+    $templateHtml = str_replace('$BODY-TYPE$', $fields["bodyType"], $templateHtml);
+    $templateHtml = str_replace('$FUEL-TYPE$', $fields["fuelType"], $templateHtml);
     $templateHtml = str_replace('$REGYEAR$', $fields["registrationYear"], $templateHtml);
     $templateHtml = str_replace('$VEHICLE-COLOUR$', $fields["vehicleColour"], $templateHtml);
     $templateHtml = str_replace('$MILEAGE$', $fields["vehicleMileage"], $templateHtml);

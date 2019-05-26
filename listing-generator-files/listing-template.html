@@ -18,6 +18,9 @@
     <meta name=”description” content=”Step Motors is a garage which services, repairs and diagnoses all types of makes
         and models of cars and vans. It also engages in vehicle sales. This is a vehicle listing”>
 
+    <script type="text/javascript"> if (screen.width <= 699) { document.location = "$MOBILE-URL$";}</script>
+
+
     <script type="application/ld+json">
   {
     "@context" : "http://schema.org",
@@ -89,11 +92,17 @@
         <div style="display: flex; flex-direction: row; justify-content: space-between; padding-top:20px; padding-bottom: 20px;">
             
             <div style="padding-left: 10px;">
+                <p><span class="stepMotorRedBlackOps">Make:</span> $MAKE$</p>
+                <p><span class="stepMotorRedBlackOps">Model:</span> $MODEL$</p>
+                <p><span class="stepMotorRedBlackOps">Fuel Type:</span> $FUEL-TYPE$</p>
+                <p><span class="stepMotorRedBlackOps">Body Type:</span> $BODY-TYPE$</p>
                 <p><span class="stepMotorRedBlackOps">Mileage:</span> $MILEAGE$</p>
-                <p style="visibility: hidden;"><span class="stepMotorRedBlackOps">Doors:</span>$NUMBER-OF-DOORS$</p>
+                <p><span class="stepMotorRedBlackOps">Doors:</span> $NUMBER-OF-DOORS$</p>
                 <p><span class="stepMotorRedBlackOps">Engine:</span> $ENGINE$</p>
                 <p><span class="stepMotorRedBlackOps">Year:</span> $REGYEAR$</p>
                 <p><span class="stepMotorRedBlackOps">Colour:</span> $VEHICLE-COLOUR$</p>
+                <p><span class="stepMotorRedBlackOps">Previous Owners:</span> $PREV-OWNR$</p>
+                <p><span class="stepMotorRedBlackOps">Road Tax:</span> $ROAD-TAX$</p>
             </div>
 
             <div id="carouselListingImages" style="height: 500px; width: 600px; margin: 0 auto; background-color: #8181822b; margin-right: 120px; margin-left: 15px;" class="carousel slide" data-ride="carousel">
@@ -312,7 +321,6 @@
     <script src="../../bootstrap/js/util.js"></script>
 
 
-    <script type="text/javascript"> if (screen.width <= 699) { document.location = "$MOBILE-URL$";}</script>
 
     <!-- <script>
         jQuery('.carousel').carousel({ interval: 3000 });
