@@ -111,7 +111,7 @@ function getListingHtml($fields, $imageFilenameArray, $mobileUrl) {
     $templateHtml = str_replace('$MOBILE-URL$', $mobileUrl, $templateHtml);
     $templateHtml = str_replace('$LISTING-NAME$', $fields["listingName"], $templateHtml);
     $templateHtml = str_replace('$LISTING-BODY$', $fields["listingBody"], $templateHtml);
-    $templateHtml = str_replace('<p style="visibility: hidden; padding: 10px;"><span class="stepMotorRedBlackOps">Doors:</span>$NUMBER-OF-DOORS$</p>', '<p style="padding: 10px;"><span class="stepMotorRedBlackOps">Doors:</span> ' . $fields["numberDoors"] . '</p>', $templateHtml);
+    $templateHtml = str_replace('<p style="visibility: hidden;"><span class="stepMotorRedBlackOps">Doors:</span>$NUMBER-OF-DOORS$</p>', '<p><span class="stepMotorRedBlackOps">Doors:</span> ' . $fields["numberDoors"] . '</p>', $templateHtml);
     $templateHtml = str_replace('$ENGINE$', $fields["engineSize"], $templateHtml);
     $templateHtml = str_replace('$REGYEAR$', $fields["registrationYear"], $templateHtml);
     $templateHtml = str_replace('$VEHICLE-COLOUR$', $fields["vehicleColour"], $templateHtml);
